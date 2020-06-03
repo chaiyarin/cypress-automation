@@ -13,6 +13,19 @@ describe('Basic UI', () => {
         // Static Dropdown
         cy.get('select').select('option2').should('have.value', 'option2')
 
+        cy.get('#autocomplete').type('ind')
+        cy.get('.ui-menu-item').each(($element, index, $list) => {
+            if($element.text() === 'India') {
+                $element.click()
+            }
+        })
+        cy.get('#autocomplete').should('have.value', 'India')
+        cy.get('#displayed-text').should('have.be.visible')
+        cy.get('#hide-textbox').click()
+        cy.get('#displayed-text').should('have.not.be.visible')
+        cy.get('[for="radio1"] > .radioButton').click().should('have.value', 'radio1')
+
+
 
     })
 })
