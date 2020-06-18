@@ -20,6 +20,7 @@ describe('Test Cypress Framework', () => {
         //         cy.get('button.btn.btn-info').eq(index).click()
         //     }
         // })
+        cy.pause()
         data.productNames.forEach(element => {
             cy.selectProduct(element)
         });
